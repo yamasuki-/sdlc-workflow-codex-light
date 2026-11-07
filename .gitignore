@@ -1,0 +1,5 @@
+# ワークフローの作業ファイル（worktree ごとに独立）
+.sdlc/
+__pycache__/
+*.pyc
+.DS_Store

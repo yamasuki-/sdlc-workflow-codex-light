@@ -1,0 +1,41 @@
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "^(apply_patch|Edit|Write)$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"$(git rev-parse --show-toplevel)/.codex/hooks/sdlc/run\" guard_write.py",
+            "commandWindows": "bash ((git rev-parse --show-toplevel) + '/.codex/hooks/sdlc/run') guard_write.py",
+            "timeout": 60
+          }
+        ]
+      },
+      {
+        "matcher": "^Bash$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"$(git rev-parse --show-toplevel)/.codex/hooks/sdlc/run\" guard_bash.py",
+            "commandWindows": "bash ((git rev-parse --show-toplevel) + '/.codex/hooks/sdlc/run') guard_bash.py",
+            "timeout": 60
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "matcher": "^(startup|resume)$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"$(git rev-parse --show-toplevel)/.codex/hooks/sdlc/run\" session_start.py",
+            "commandWindows": "bash ((git rev-parse --show-toplevel) + '/.codex/hooks/sdlc/run') session_start.py",
+            "timeout": 30
+          }
+        ]
+      }
+    ]
+  }
+}
